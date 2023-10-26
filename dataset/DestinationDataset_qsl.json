@@ -1,0 +1,39 @@
+{
+	"name": "DestinationDataset_qsl",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SOURCE_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATABASE_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "SCHEMA_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "TABLE_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "COLUMN_MAPPING",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DataSource"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

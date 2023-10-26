@@ -1,0 +1,17 @@
+{
+	"name": "Drop_all_external_tables",
+	"properties": {
+		"content": {
+			"query": "declare @sql nvarchar(max) = (\nselect STRING_AGG('drop external table ['+s.name+'].['+v.name+']; ','\n')\nfrom sys.tables v\njoin sys.schemas s on s.schema_id = v.schema_id\nwhere v.is_ms_shipped = 0\n)\n\nexec(@sql)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "RawDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

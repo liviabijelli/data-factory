@@ -1,0 +1,602 @@
+{
+	"name": "Manual_Metadata_Treatment",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "afa971a0-1141-4092-86c2-7e64055107c6"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"54ea321f-4e31-4288-8a17-9744c365605c": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "GuidDocument,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "IdConcepto,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "CveProdSer,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "CveProdSerDesc,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "NoIdentificacion,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "Cantidad,Double"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "ClaveUnidad,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "ClaveUnidadDesc,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "Unidad,String"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "Descripcion,String"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "TABLEFULL",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "CSV",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"ac0d86c8-a501-4c02-8f4d-5c897864be1a": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"GuidDocument\",\"type\":\"String\"},\"sink\":{\"name\":\"GuidDocument\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"IdConcepto\",\"type\":\"String\"},\"sink\":{\"name\":\"IdConcepto\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"CveProdSer\",\"type\":\"String\"},\"sink\":{\"name\":\"CveProdSer\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"CveProdSerDesc\",\"type\":\"String\"},\"sink\":{\"name\":\"CveProdSerDesc\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"NoIdentificacion\",\"type\":\"String\"},\"sink\":{\"name\":\"NoIdentificacion\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"Cantidad\",\"type\":\"Double\"},\"sink\":{\"name\":\"Cantidad\",\"type\":\"Double\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"ClaveUnidad\",\"type\":\"String\"},\"sink\":{\"name\":\"ClaveUnidad\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"ClaveUnidadDesc\",\"type\":\"String\"},\"sink\":{\"name\":\"ClaveUnidadDesc\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"Unidad\",\"type\":\"String\"},\"sink\":{\"name\":\"Unidad\",\"type\":\"String\"}}"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "{\"source\":{\"name\":\"Descripcion\",\"type\":\"String\"},\"sink\":{\"name\":\"Descripcion\",\"type\":\"String\"}}"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "TABLEFULL",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "FIELD",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"11455781-f1b8-4b77-8592-61b1e6f109ac": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "[adPREDETERMINADA].[dbo.admParametros]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"CNOMBREEMPRESA\",\"type\":\"String\"},\"sink\":{\"name\":\"CNOMBREEMPRESA\",\"type\":\"String\"}},{\"source\":{\"name\":\"CRFCEMPRESA\",\"type\":\"String\"},\"sink\":{\"name\":\"CRFCEMPRESA\",\"type\":\"String\"}},{\"source\":{\"name\":\"CREGIMFISC\",\"type\":\"String\"},\"sink\":{\"name\":\"CREGIMFISC\",\"type\":\"String\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[ctEmpresaEjemploBD].[dbo.SaldosCuentas]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"Ejercicio\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Ejercicio\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Id\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Id\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdCuenta\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdCuenta\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Importes1\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes10\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes10\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes11\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes11\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes12\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes12\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes13\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes13\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes14\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes14\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes2\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes3\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes3\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes4\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes4\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes5\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes5\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes6\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes6\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes7\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes7\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes8\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes8\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importes9\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importes9\",\"type\":\"Double\"}},{\"source\":{\"name\":\"SaldoIni\",\"type\":\"Double\"},\"sink\":{\"name\":\"SaldoIni\",\"type\":\"Double\"}},{\"source\":{\"name\":\"TimeStamp\",\"type\":\"String\"},\"sink\":{\"name\":\"TimeStamp\",\"type\":\"String\"}},{\"source\":{\"name\":\"Tipo\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Tipo\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[ctEmpresaEjemploBD].[dbo.Categorias]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"Codigo\",\"type\":\"String\"},\"sink\":{\"name\":\"Codigo\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoCtaComplementaria\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoCtaComplementaria\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoCuenta\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoCuenta\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoMoneda\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoMoneda\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoPrepoliza\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoPrepoliza\",\"type\":\"String\"}},{\"source\":{\"name\":\"Id\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Id\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdDatoExtra\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdDatoExtra\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdSegNeg\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdSegNeg\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Nivel\",\"type\":\"String\"},\"sink\":{\"name\":\"Nivel\",\"type\":\"String\"}},{\"source\":{\"name\":\"Nombre\",\"type\":\"String\"},\"sink\":{\"name\":\"Nombre\",\"type\":\"String\"}},{\"source\":{\"name\":\"Presupuesto\",\"type\":\"String\"},\"sink\":{\"name\":\"Presupuesto\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegmentoCuenta\",\"type\":\"String\"},\"sink\":{\"name\":\"SegmentoCuenta\",\"type\":\"String\"}},{\"source\":{\"name\":\"Tipo\",\"type\":\"String\"},\"sink\":{\"name\":\"Tipo\",\"type\":\"String\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[ctEmpresaEjemploBD].[dbo.CuentasCheques]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"Codigo\",\"type\":\"String\"},\"sink\":{\"name\":\"Codigo\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoConceptoComercialCheque\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoConceptoComercialCheque\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoConceptoComercialEgreso\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoConceptoComercialEgreso\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoConceptoComercialIngreso\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoConceptoComercialIngreso\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoConceptoComercialIngresoCFD\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoConceptoComercialIngresoCFD\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoConceptoComercialIngresoND\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoConceptoComercialIngresoND\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoConceptoComercialIngresoNDCFD\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoConceptoComercialIngresoNDCFD\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoCtaComplementaria\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoCtaComplementaria\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoCuenta\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoCuenta\",\"type\":\"String\"}},{\"source\":{\"name\":\"CodigoMoneda\",\"type\":\"String\"},\"sink\":{\"name\":\"CodigoMoneda\",\"type\":\"String\"}},{\"source\":{\"name\":\"Concepto\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Concepto\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Direccion\",\"type\":\"String\"},\"sink\":{\"name\":\"Direccion\",\"type\":\"String\"}},{\"source\":{\"name\":\"Ejecutivo\",\"type\":\"String\"},\"sink\":{\"name\":\"Ejecutivo\",\"type\":\"String\"}},{\"source\":{\"name\":\"EsBaja\",\"type\":\"Int64\"},\"sink\":{\"name\":\"EsBaja\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Fax\",\"type\":\"String\"},\"sink\":{\"name\":\"Fax\",\"type\":\"String\"}},{\"source\":{\"name\":\"FechaSaldoInicial\",\"type\":\"DateTime\"},\"sink\":{\"name\":\"FechaSaldoInicial\",\"type\":\"DateTime\"}},{\"source\":{\"name\":\"FechaUltConciliacion\",\"type\":\"DateTime\"},\"sink\":{\"name\":\"FechaUltConciliacion\",\"type\":\"DateTime\"}},{\"source\":{\"name\":\"FolioActual\",\"type\":\"String\"},\"sink\":{\"name\":\"FolioActual\",\"type\":\"String\"}},{\"source\":{\"name\":\"FolioFinal\",\"type\":\"String\"},\"sink\":{\"name\":\"FolioFinal\",\"type\":\"String\"}},{\"source\":{\"name\":\"FolioInicial\",\"type\":\"String\"},\"sink\":{\"name\":\"FolioInicial\",\"type\":\"String\"}},{\"source\":{\"name\":\"FormatoAbono\",\"type\":\"String\"},\"sink\":{\"name\":\"FormatoAbono\",\"type\":\"String\"}},{\"source\":{\"name\":\"FormatoCargo\",\"type\":\"String\"},\"sink\":{\"name\":\"FormatoCargo\",\"type\":\"String\"}},{\"source\":{\"name\":\"FormatoCheque\",\"type\":\"String\"},\"sink\":{\"name\":\"FormatoCheque\",\"type\":\"String\"}},{\"source\":{\"name\":\"FormatoDeposito\",\"type\":\"String\"},\"sink\":{\"name\":\"FormatoDeposito\",\"type\":\"String\"}},{\"source\":{\"name\":\"FormatoIngreso\",\"type\":\"String\"},\"sink\":{\"name\":\"FormatoIngreso\",\"type\":\"String\"}},{\"source\":{\"name\":\"Id\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Id\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdBanco\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdBanco\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdDatoExtra\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdDatoExtra\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdDiarioEgreso\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdDiarioEgreso\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdDiarioIngreso\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdDiarioIngreso\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdPlantillaEstadoCuenta\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdPlantillaEstadoCuenta\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdSegNeg\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdSegNeg\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Nombre\",\"type\":\"String\"},\"sink\":{\"name\":\"Nombre\",\"type\":\"String\"}},{\"source\":{\"name\":\"NumSucursal\",\"type\":\"String\"},\"sink\":{\"name\":\"NumSucursal\",\"type\":\"String\"}},{\"source\":{\"name\":\"permitirCambiarConceptoComercial\",\"type\":\"Int64\"},\"sink\":{\"name\":\"permitirCambiarConceptoComercial\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Referencia\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Referencia\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"SegContCuentaCheque1\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque1\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegContCuentaCheque2\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque2\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegContCuentaCheque3\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque3\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegContCuentaCheque4\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque4\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegContCuentaCheque5\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque5\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegContCuentaCheque6\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque6\",\"type\":\"String\"}},{\"source\":{\"name\":\"SegContCuentaCheque7\",\"type\":\"String\"},\"sink\":{\"name\":\"SegContCuentaCheque7\",\"type\":\"String\"}},{\"source\":{\"name\":\"Sucursal\",\"type\":\"String\"},\"sink\":{\"name\":\"Sucursal\",\"type\":\"String\"}},{\"source\":{\"name\":\"TDCheque\",\"type\":\"String\"},\"sink\":{\"name\":\"TDCheque\",\"type\":\"String\"}},{\"source\":{\"name\":\"TDDeposito\",\"type\":\"String\"},\"sink\":{\"name\":\"TDDeposito\",\"type\":\"String\"}},{\"source\":{\"name\":\"TDEgreso\",\"type\":\"String\"},\"sink\":{\"name\":\"TDEgreso\",\"type\":\"String\"}},{\"source\":{\"name\":\"TDIngreso\",\"type\":\"String\"},\"sink\":{\"name\":\"TDIngreso\",\"type\":\"String\"}},{\"source\":{\"name\":\"TDIngresoND\",\"type\":\"String\"},\"sink\":{\"name\":\"TDIngresoND\",\"type\":\"String\"}},{\"source\":{\"name\":\"Telefono\",\"type\":\"String\"},\"sink\":{\"name\":\"Telefono\",\"type\":\"String\"}},{\"source\":{\"name\":\"Titular1\",\"type\":\"String\"},\"sink\":{\"name\":\"Titular1\",\"type\":\"String\"}},{\"source\":{\"name\":\"Titular2\",\"type\":\"String\"},\"sink\":{\"name\":\"Titular2\",\"type\":\"String\"}},{\"source\":{\"name\":\"Titular3\",\"type\":\"String\"},\"sink\":{\"name\":\"Titular3\",\"type\":\"String\"}},{\"source\":{\"name\":\"UsaActTipoCambio\",\"type\":\"Int64\"},\"sink\":{\"name\":\"UsaActTipoCambio\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"UsaNumeracionAut\",\"type\":\"Int64\"},\"sink\":{\"name\":\"UsaNumeracionAut\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"UsaRango\",\"type\":\"Int64\"},\"sink\":{\"name\":\"UsaRango\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"UsarRefConciliacion\",\"type\":\"Int64\"},\"sink\":{\"name\":\"UsarRefConciliacion\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"UsarRefIngEgConciliacion\",\"type\":\"Int64\"},\"sink\":{\"name\":\"UsarRefIngEgConciliacion\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[adPREDETERMINADA].[dbo.admDocumentos]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"CIDDOCUMENTO\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDDOCUMENTO\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CIDDOCUMENTODE\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDDOCUMENTODE\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CSERIEDOCUMENTO\",\"type\":\"String\"},\"sink\":{\"name\":\"CSERIEDOCUMENTO\",\"type\":\"String\"}},{\"source\":{\"name\":\"CFOLIO\",\"type\":\"Double\"},\"sink\":{\"name\":\"CFOLIO\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CFECHA\",\"type\":\"DateTime\"},\"sink\":{\"name\":\"CFECHA\",\"type\":\"DateTime\"}},{\"source\":{\"name\":\"CIDCLIENTEPROVEEDOR\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDCLIENTEPROVEEDOR\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CRAZONSOCIAL\",\"type\":\"String\"},\"sink\":{\"name\":\"CRAZONSOCIAL\",\"type\":\"String\"}},{\"source\":{\"name\":\"CRFC\",\"type\":\"String\"},\"sink\":{\"name\":\"CRFC\",\"type\":\"String\"}},{\"source\":{\"name\":\"CIDAGENTE\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDAGENTE\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CFECHAVENCIMIENTO\",\"type\":\"DateTime\"},\"sink\":{\"name\":\"CFECHAVENCIMIENTO\",\"type\":\"DateTime\"}},{\"source\":{\"name\":\"CFECHAPRONTOPAGO\",\"type\":\"DateTime\"},\"sink\":{\"name\":\"CFECHAPRONTOPAGO\",\"type\":\"DateTime\"}},{\"source\":{\"name\":\"CFECHAENTREGARECEPCION\",\"type\":\"DateTime\"},\"sink\":{\"name\":\"CFECHAENTREGARECEPCION\",\"type\":\"DateTime\"}},{\"source\":{\"name\":\"CIDMONEDA\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDMONEDA\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CTIPOCAMBIO\",\"type\":\"Double\"},\"sink\":{\"name\":\"CTIPOCAMBIO\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CCANCELADO\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CCANCELADO\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CDEVUELTO\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CDEVUELTO\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CNETO\",\"type\":\"Double\"},\"sink\":{\"name\":\"CNETO\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CIMPUESTO1\",\"type\":\"Double\"},\"sink\":{\"name\":\"CIMPUESTO1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CIMPUESTO2\",\"type\":\"Double\"},\"sink\":{\"name\":\"CIMPUESTO2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CIMPUESTO3\",\"type\":\"Double\"},\"sink\":{\"name\":\"CIMPUESTO3\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CRETENCION1\",\"type\":\"Double\"},\"sink\":{\"name\":\"CRETENCION1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CRETENCION2\",\"type\":\"Double\"},\"sink\":{\"name\":\"CRETENCION2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CDESCUENTOMOV\",\"type\":\"Double\"},\"sink\":{\"name\":\"CDESCUENTOMOV\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CDESCUENTODOC1\",\"type\":\"Double\"},\"sink\":{\"name\":\"CDESCUENTODOC1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CDESCUENTODOC2\",\"type\":\"Double\"},\"sink\":{\"name\":\"CDESCUENTODOC2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CTOTAL\",\"type\":\"Double\"},\"sink\":{\"name\":\"CTOTAL\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CPENDIENTE\",\"type\":\"Double\"},\"sink\":{\"name\":\"CPENDIENTE\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CTOTALUNIDADES\",\"type\":\"Double\"},\"sink\":{\"name\":\"CTOTALUNIDADES\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CPORCENTAJEIMPUESTO1\",\"type\":\"Double\"},\"sink\":{\"name\":\"CPORCENTAJEIMPUESTO1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CPORCENTAJEIMPUESTO2\",\"type\":\"Double\"},\"sink\":{\"name\":\"CPORCENTAJEIMPUESTO2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CPORCENTAJEIMPUESTO3\",\"type\":\"Double\"},\"sink\":{\"name\":\"CPORCENTAJEIMPUESTO3\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CPORCENTAJERETENCION1\",\"type\":\"Double\"},\"sink\":{\"name\":\"CPORCENTAJERETENCION1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CPORCENTAJERETENCION2\",\"type\":\"Double\"},\"sink\":{\"name\":\"CPORCENTAJERETENCION2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CUNIDADESPENDIENTES\",\"type\":\"Double\"},\"sink\":{\"name\":\"CUNIDADESPENDIENTES\",\"type\":\"Double\"}},{\"source\":{\"name\":\"CSISTORIG\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CSISTORIG\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CIDMONEDCA\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDMONEDCA\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CESCFD\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CESCFD\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CLUGAREXPE\",\"type\":\"String\"},\"sink\":{\"name\":\"CLUGAREXPE\",\"type\":\"String\"}},{\"source\":{\"name\":\"CMETODOPAG\",\"type\":\"String\"},\"sink\":{\"name\":\"CMETODOPAG\",\"type\":\"String\"}},{\"source\":{\"name\":\"CNUMPARCIA\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CNUMPARCIA\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[ctEmpresaEjemploBD].[dbo.SaldosCategorias]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"Ejercicio\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Ejercicio\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Id\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Id\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"IdCategoria\",\"type\":\"Int64\"},\"sink\":{\"name\":\"IdCategoria\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Saldo1\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo1\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo10\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo10\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo11\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo11\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo12\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo12\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo13\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo13\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo14\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo14\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo2\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo2\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo3\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo3\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo4\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo4\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo5\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo5\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo6\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo6\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo7\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo7\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo8\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo8\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Saldo9\",\"type\":\"Double\"},\"sink\":{\"name\":\"Saldo9\",\"type\":\"Double\"}},{\"source\":{\"name\":\"SaldoInicial\",\"type\":\"Double\"},\"sink\":{\"name\":\"SaldoInicial\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[adPREDETERMINADA].[dbo.admAgentes]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"CIDAGENTE\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDAGENTE\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CCODIGOAGENTE\",\"type\":\"String\"},\"sink\":{\"name\":\"CCODIGOAGENTE\",\"type\":\"String\"}},{\"source\":{\"name\":\"CNOMBREAGENTE\",\"type\":\"String\"},\"sink\":{\"name\":\"CNOMBREAGENTE\",\"type\":\"String\"}},{\"source\":{\"name\":\"CTIPOAGENTE\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CTIPOAGENTE\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CIDCLIENTE\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDCLIENTE\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CIDPROVEEDOR\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDPROVEEDOR\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[adPREDETERMINADA].[dbo.admAlmacenes]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"CIDALMACEN\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDALMACEN\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CCODIGOALMACEN\",\"type\":\"String\"},\"sink\":{\"name\":\"CCODIGOALMACEN\",\"type\":\"String\"}},{\"source\":{\"name\":\"CNOMBREALMACEN\",\"type\":\"String\"},\"sink\":{\"name\":\"CNOMBREALMACEN\",\"type\":\"String\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"GuidDocument\",\"type\":\"String\"},\"sink\":{\"name\":\"GuidDocument\",\"type\":\"String\"}},{\"source\":{\"name\":\"IdConcepto\",\"type\":\"String\"},\"sink\":{\"name\":\"IdConcepto\",\"type\":\"String\"}},{\"source\":{\"name\":\"CveProdSer\",\"type\":\"String\"},\"sink\":{\"name\":\"CveProdSer\",\"type\":\"String\"}},{\"source\":{\"name\":\"CveProdSerDesc\",\"type\":\"String\"},\"sink\":{\"name\":\"CveProdSerDesc\",\"type\":\"String\"}},{\"source\":{\"name\":\"NoIdentificacion\",\"type\":\"String\"},\"sink\":{\"name\":\"NoIdentificacion\",\"type\":\"String\"}},{\"source\":{\"name\":\"Cantidad\",\"type\":\"Double\"},\"sink\":{\"name\":\"Cantidad\",\"type\":\"Double\"}},{\"source\":{\"name\":\"ClaveUnidad\",\"type\":\"String\"},\"sink\":{\"name\":\"ClaveUnidad\",\"type\":\"String\"}},{\"source\":{\"name\":\"ClaveUnidadDesc\",\"type\":\"String\"},\"sink\":{\"name\":\"ClaveUnidadDesc\",\"type\":\"String\"}},{\"source\":{\"name\":\"Unidad\",\"type\":\"String\"},\"sink\":{\"name\":\"Unidad\",\"type\":\"String\"}},{\"source\":{\"name\":\"Descripcion\",\"type\":\"String\"},\"sink\":{\"name\":\"Descripcion\",\"type\":\"String\"}},{\"source\":{\"name\":\"ValorUnitario\",\"type\":\"Double\"},\"sink\":{\"name\":\"ValorUnitario\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Importe\",\"type\":\"Double\"},\"sink\":{\"name\":\"Importe\",\"type\":\"Double\"}},{\"source\":{\"name\":\"Descuento\",\"type\":\"Double\"},\"sink\":{\"name\":\"Descuento\",\"type\":\"Double\"}},{\"source\":{\"name\":\"ObjetoImp\",\"type\":\"String\"},\"sink\":{\"name\":\"ObjetoImp\",\"type\":\"String\"}},{\"source\":{\"name\":\"ObjetoImpDesc\",\"type\":\"String\"},\"sink\":{\"name\":\"ObjetoImpDesc\",\"type\":\"String\"}},{\"source\":{\"name\":\"RFCCtaTercero\",\"type\":\"String\"},\"sink\":{\"name\":\"RFCCtaTercero\",\"type\":\"String\"}},{\"source\":{\"name\":\"NombreCtaTercero\",\"type\":\"String\"},\"sink\":{\"name\":\"NombreCtaTercero\",\"type\":\"String\"}},{\"source\":{\"name\":\"RegimenFiscalCtaTercero\",\"type\":\"String\"},\"sink\":{\"name\":\"RegimenFiscalCtaTercero\",\"type\":\"String\"}},{\"source\":{\"name\":\"RegimenFiscalCtaTerceroDesc\",\"type\":\"String\"},\"sink\":{\"name\":\"RegimenFiscalCtaTerceroDesc\",\"type\":\"String\"}},{\"source\":{\"name\":\"DomicilioFiscalCtaTercero\",\"type\":\"String\"},\"sink\":{\"name\":\"DomicilioFiscalCtaTercero\",\"type\":\"String\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									},
+									{
+										"0": "[adPREDETERMINADA].[dbo.admEjercicios]",
+										"1": "\"mappings\":[{\"source\":{\"name\":\"CIDEJERCICIO\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CIDEJERCICIO\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"CEJERCICIO\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CEJERCICIO\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "TABLEFULL",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "MAP",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					},
+					"6d363ad0-b169-4aa1-b75c-d473861a386e": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "GuidDocument VARCHAR(40),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "IdConcepto VARCHAR (60),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "CveProdSer VARCHAR (25),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "CveProdSerDesc VARCHAR (255),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "NoIdentificacion VARCHAR (255),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "Cantidad FLOAT(8),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "ClaveUnidad VARCHAR (20),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "ClaveUnidadDesc VARCHAR (255),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "Unidad VARCHAR (255),"
+									},
+									{
+										"0": "[other_metadata].[dbo.Conceptos]",
+										"1": "Descripcion VARCHAR (1000),"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "TABLEFULL",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "COLUMN",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/8afc32e2-fd50-40bd-8ebb-384d5f35d98a/resourceGroups/cti-datalake/providers/Microsoft.Synapse/workspaces/contpaqui1/bigDataPools/sparkpool",
+				"name": "sparkpool",
+				"type": "Spark",
+				"endpoint": "https://contpaqui1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.3",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('abfss://config@conpaqis.dfs.core.windows.net/metadata/manual/full_table_desc.csv', format='csv', header='True')\r\n",
+					"display(df.limit(10))"
+				],
+				"execution_count": 7
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"from pyspark.sql.functions import *\r\n",
+					"df2=df.groupBy(\"TABLEFULL\").agg(collect_list(col(\"COLUMN\")).alias(\"COLUMNS\"))\r\n",
+					""
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"df3 = df2.withColumn(\"FIELDS\", concat_ws(\" \",col(\"COLUMNS\")))"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#Using toLocalIterator()\r\n",
+					"dataCollect=df3.rdd.toLocalIterator()\r\n",
+					"for row in dataCollect:\r\n",
+					"    tmp= row['TABLEFULL'] \r\n",
+					"    full = tmp.replace(\"[\",\"\").replace(\"]\",\"\").replace(\".\",\"/\")\r\n",
+					"    S = \"CREATE EXTERNAL TABLE \" + row['TABLEFULL'] + \" (\" +row['FIELDS'] + \" [Year] VARCHAR(4), [Month] VARCHAR(2), [Day] VARCHAR(2), [Hour] VARCHAR(8)) WITH ( LOCATION = '\" + full + \"/Year=*/Month=*/Day=*/*.parquet', DATA_SOURCE = [dl_raw],FILE_FORMAT = [dl_parquet]);\\n\"\r\n",
+					"    mssparkutils.fs.append(\"/comm.sql\", S, True)\r\n",
+					""
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"\r\n",
+					"from pyspark.sql.functions import *\r\n",
+					"\r\n",
+					"df = spark.read.load('abfss://config@conpaqis.dfs.core.windows.net/metadata/manual/map_desc.csv', format='csv', header='True')\r\n",
+					"display(df.limit(10))"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"df2 = df.withColumn('CSV2', regexp_replace(col('CSV'),',','\",\"type\":\"'))\r\n",
+					"df2 = df2.withColumn('SOURCE', concat(lit('{\"source\":{\"name\":\"'),col('CSV2'),lit('\"}')))\r\n",
+					"df2 = df2.withColumn('SINK', concat(lit('\"sink\":{\"name\":\"'),col('CSV2'),lit('\"}}')))\r\n",
+					"df2 = df2.withColumn('FIELD', concat(col('SOURCE'),lit(','),col('SINK')))\r\n",
+					"columns_to_drop = ['CSV','CSV2', 'SOURCE','SINK']\r\n",
+					"df2 = df2.drop(*columns_to_drop)\r\n",
+					"display(df2.limit(10))\r\n",
+					"\r\n",
+					"#COLUMN_MAPPING = '\"mappings\":[{\"source\":{\"name\":\"Codigo\",\"type\":\"String\"},\"sink\":{\"name\":\"Codigo\",\"type\":\"String\"}},{\"source\":{\"name\":\"CtaMayor\",\"type\":\"Int64\"},\"sink\":{\"name\":\"CtaMayor\",\"type\":\"Int64\"}},{\"source\":{\"name\":\"Id\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Id\"},\"type\":\"Int64\"},{\"source\":{\"name\":\"IdRubro\",\"type\":\"Int64\"},\"sink\":{\"name\":\"Int64\"}},{\"source\":{\"name\":\"Nombre\",\"type\":\"String\"},\"sink\":{\"name\":\"Nombre\"}},{\"source\":{\"name\":\"TimeStamp\",\"type\":\"String\"},\"sink\":{\"name\":\"TimeStamp\"}},{\"source\":{\"name\":\"Tipo\",\"type\":\"String\"},\"sink\":{\"name\":\"Tipo\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}}]'\r\n",
+					""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"\r\n",
+					"df3=df2.groupBy(\"TABLEFULL\").agg(collect_list(col(\"FIELD\")).alias(\"COLUMNS\"))\r\n",
+					""
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"df4 = df3.withColumn(\"FIELDS\", concat_ws(\",\",col(\"COLUMNS\")))\r\n",
+					"df4 = df4.withColumn(\"MAP\", concat(lit('\"mappings\":['),col(\"FIELDS\"),lit(',{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"name\":\"Time\"}}]')))\r\n",
+					"columns_to_drop = ['COLUMNS','FIELDS']\r\n",
+					"df4 = df4.drop(*columns_to_drop)\r\n",
+					"display(df4.limit(10))\r\n",
+					"#\"mappings\":[{\"source\":{\"name\":\"CNOMBREEMPRESA\",\"type\":\"String\"},\"sink\":{\"name\":\"CNOMBREEMPRESA\",\"type\":\"String\"}},{\"source\":{\"name\":\"CRFCEMPRESA\",\"type\":\"String\"},\"sink\":{\"name\":\"CRFCEMPRESA\",\"type\":\"String\"}},{\"source\":{\"name\":\"CREGIMFISC\",\"type\":\"String\"},\"sink\":{\"name\":\"CREGIMFISC\",\"type\":\"String\"}},{\"source\":{\"name\":\"Year\",\"type\":\"String\"},\"sink\":{\"name\":\"Year\"}},{\"source\":{\"name\":\"Month\",\"type\":\"String\"},\"sink\":{\"name\":\"Month\"}},{\"source\":{\"name\":\"Day\",\"type\":\"String\"},\"sink\":{\"name\":\"Day\"}},{\"source\":{\"name\":\"Time\",\"type\":\"String\"},\"sink\":{\"Time\":\"String\"}}]"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"dataCollect=df4.rdd.toLocalIterator()\r\n",
+					"for row in dataCollect:\r\n",
+					"    tmp= row['TABLEFULL'] \r\n",
+					"    full = tmp.replace(\"[\",\"\").replace(\"]\",\"\").replace(\".\",\";\")\r\n",
+					"    database, schema, table = full.split(\";\")\r\n",
+					"    tmp = row['MAP']\r\n",
+					"    S = \"INSERT INTO dbo.DataSource VALUES('\" + database + \"','\" + schema + \"','\" + table + \"','\" + tmp + \"');\\n\"\r\n",
+					"    mssparkutils.fs.append(\"/INSERTS.sql\", S, True)\r\n",
+					"        \r\n",
+					"   "
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					""
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "lrbf_parquettransf",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lrbf_DataLake_Storage_Account",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "DocAdministrativo/newparquet",
+				"fileSystem": "raw"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

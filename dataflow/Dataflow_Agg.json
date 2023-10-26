@@ -1,0 +1,98 @@
+{
+	"name": "Dataflow_Agg",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "DataLake",
+						"type": "LinkedServiceReference"
+					},
+					"name": "DocAdministrativo"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "DataLake",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Company as string,",
+				"          UUID as string,",
+				"          CFDIUse as string,",
+				"          Version as string,",
+				"          VoucherType as string,",
+				"          SealingDate as date,",
+				"          Status as string,",
+				"          ZipCode as string,",
+				"          State as string,",
+				"          City as string,",
+				"          BankAccountOrigin as decimal(10,0),",
+				"          BankAccountDestination as decimal(10,0),",
+				"          ExchangeRate as decimal(10,0),",
+				"          ExchangeRateDof as decimal(10,0),",
+				"          TotalNotBrokenDownTaxAmount as decimal(10,0),",
+				"          TotalAmount as decimal(10,0),",
+				"          SubTotalAmount as decimal(10,0),",
+				"          Discount as decimal(10,0),",
+				"          PaymentMethod as string,",
+				"          PaymentForm as string,",
+				"          BankCheckNumber as string,",
+				"          TotalRetentionTaxes as decimal(10,0),",
+				"          TotalTranferTaxes as decimal(10,0),",
+				"          LocalTotalRetentionTaxes as decimal(10,0),",
+				"          LocalTotalTranferTaxes as string,",
+				"          ReceptorFiscalAddress as string,",
+				"          TaxRegimen as string,",
+				"          RFC as string,",
+				"          Name as string,",
+				"          PartitionDate as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     compressionType: 'snappy',",
+				"     compressionLevel: 'Fastest',",
+				"     fileSystem: 'cleansed',",
+				"     folderPath: 'synapse/workspaces/contpaqui1/warehouse/DocAdministrativo') ~> DocAdministrativo",
+				"DocAdministrativo aggregate(groupBy(RFC),",
+				"     TotalAmount = sum(TotalAmount)) ~> aggregate1",
+				"aggregate1 alterRow(upsertIf(true())) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'curated',",
+				"     folderPath: 'AggDocAdministrativo',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: true,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: true,",
+				"     keys:['RFC'],",
+				"     umask: 0066,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

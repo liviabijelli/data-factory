@@ -1,0 +1,17 @@
+{
+	"name": "Login pbi",
+	"properties": {
+		"content": {
+			"query": "\nCREATE LOGIN pbi WITH PASSWORD = '#Kyndryl123';\nCREATE USER pbi FROM LOGIN pbi;\nALTER ROLE db_owner ADD MEMBER pbi;\n\nGRANT CONNECT TO pbi",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CleansedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

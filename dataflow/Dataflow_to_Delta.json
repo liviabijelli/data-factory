@@ -1,0 +1,90 @@
+{
+	"name": "Dataflow_to_Delta",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ingestion_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "raw"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "DataLake",
+						"type": "LinkedServiceReference"
+					},
+					"name": "Delta"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn"
+				},
+				{
+					"name": "MapDrifted",
+					"description": "Creates an explicit mapping for each drifted column"
+				},
+				{
+					"name": "alterRow"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     database_name as string,",
+				"     schema_name as string,",
+				"     table_name as string,",
+				"     file_name as string",
+				"}",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     purgeFiles: true,",
+				"     format: 'parquet') ~> raw",
+				"raw derive(DateInsert = currentTimestamp()) ~> derivedColumn",
+				"derivedColumn derive(Codigo = toString(byName('Codigo')),",
+				"          CtaMayor = toLong(byName('CtaMayor')),",
+				"          Id = toLong(byName('Id')),",
+				"          IdRubro = toLong(byName('IdRubro')),",
+				"          Nombre = toString(byName('Nombre')),",
+				"          TimeStamp = toString(byName('TimeStamp')),",
+				"          Tipo = toString(byName('Tipo')),",
+				"          Year = toString(byName('Year')),",
+				"          Month = toString(byName('Month')),",
+				"          Day = toString(byName('Day')),",
+				"          Time = toString(byName('Time'))) ~> MapDrifted",
+				"MapDrifted alterRow(upsertIf(true())) ~> alterRow",
+				"alterRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'cleansed',",
+				"     folderPath: (concat('synapse/workspaces/contpaqui1/warehouse/',$database_name,'/',$schema_name,'/',$table_name,'/')),",
+				"     mergeSchema: true,",
+				"     autoCompact: false,",
+				"     optimizedWrite: false,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: true,",
+				"     upsertable: true,",
+				"     keys:['Id'],",
+				"     umask: 0666,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('key',",
+				"          0,",
+				"          Year,",
+				"          Month,",
+				"          Day",
+				"     )) ~> Delta"
+			]
+		}
+	}
+}

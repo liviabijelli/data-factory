@@ -1,0 +1,17 @@
+{
+	"name": "test_raw_table",
+	"properties": {
+		"content": {
+			"query": "\nselect * from [ctEmpresaEjemploBD].[dbo.Bancos] \n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "RawDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

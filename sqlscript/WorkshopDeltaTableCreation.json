@@ -1,0 +1,17 @@
+{
+	"name": "WorkshopDeltaTableCreation",
+	"properties": {
+		"content": {
+			"query": "DROP EXTERNAL TABLE [workshop].[DocAdministrativo] \n\nCREATE SCHEMA workshop\n\nCREATE EXTERNAL TABLE [workshop].[DocAdministrativo] (\n\t[RFC] nvarchar(4000),\n\t[TotalAmount] numeric(10,0)\n\t)\n\tWITH (\n\tLOCATION = '/AggDocAdministrativo/',\n\tDATA_SOURCE = [dl_curated],\n\tFILE_FORMAT = [dl_delta]\n\t)\nGO\n\n\nSELECT  * FROM [workshop].[DocAdministrativo]\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CuratedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

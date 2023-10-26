@@ -1,0 +1,418 @@
+{
+	"name": "lrbf_LandingToRaw",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy File",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Company",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Company",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "UUID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "UUID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "CFDIUse",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CFDIUse",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Version",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Version",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "VoucherType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VoucherType",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "SealingDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SealingDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "ZipCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ZipCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "BankAccountOrigin",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BankAccountOrigin",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "BankAccountDestination",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BankAccountDestination",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "ExchangeRate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ExchangeRate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "ExchangeRateDof",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ExchangeRateDof",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalNotBrokenDownTaxAmount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TotalNotBrokenDownTaxAmount",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalAmount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TotalAmount",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "SubTotalAmount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SubTotalAmount",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Discount",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Discount",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethod",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PaymentMethod",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentForm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PaymentForm",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "BankCheckNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BankCheckNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalRetentionTaxes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TotalRetentionTaxes",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalTranferTaxes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TotalTranferTaxes",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "LocalTotalRetentionTaxes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocalTotalRetentionTaxes",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "LocalTotalTranferTaxes",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocalTotalTranferTaxes",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "ReceptorFiscalAddress",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ReceptorFiscalAddress",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "TaxRegimen",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TaxRegimen",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "RFC",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RFC",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "lrbfDocAdministrativos",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "lrbf_DocAdministrativos_Parquet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-10-26T19:32:48Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

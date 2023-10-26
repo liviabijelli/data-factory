@@ -1,0 +1,17 @@
+{
+	"name": "Test_Raw_AgrupadoresSAT",
+	"properties": {
+		"content": {
+			"query": "SELECT *\n FROM [ctEmpresaEjemploBD].[dbo.AgrupadoresSAT]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "RawDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

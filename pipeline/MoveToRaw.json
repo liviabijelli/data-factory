@@ -1,0 +1,466 @@
+{
+	"name": "MoveToRaw",
+	"properties": {
+		"description": "Move files from one folder to another folder",
+		"activities": [
+			{
+				"name": "GetFileList",
+				"description": "Get the list of file",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "BinaryDataSource_Folder",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEachFile",
+				"description": "Iterate each file, and move them one by one.",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "FilterFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('FilterFiles').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 20,
+					"activities": [
+						{
+							"name": "Lookup_MetadataDB",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "SELECT CONCAT('{\"type\":\"TabularTranslator\",',COLUMN_MAPPING,'}') as 'mapping' FROM dbo.DataSource\nWHERE CONCAT([DATABASE_NAME],'_',[SCHEMA_NAME],'_',[TABLE_NAME],'.csv') = \n'@{item().name}'\n",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"isolationLevel": "Snapshot",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "MetadataDB",
+									"type": "DatasetReference"
+								}
+							}
+						},
+						{
+							"name": "move_to_raw",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Lookup_MetadataDB",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"additionalColumns": [
+										{
+											"name": "Year",
+											"value": {
+												"value": "@utcNow('yyyy')",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "Month",
+											"value": {
+												"value": "@utcNow('MM')",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "Day",
+											"value": {
+												"value": "@utcNow('dd')",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "Time",
+											"value": {
+												"value": "@utcNow('HHmmss')",
+												"type": "Expression"
+											}
+										}
+									],
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": false,
+										"wildcardFolderPath": "in",
+										"wildcardFileName": {
+											"value": "@{item().name}",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "FlattenHierarchy"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"value": "@json(activity('Lookup_MetadataDB').output.firstRow.mapping)",
+									"type": "Expression"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "landing_in",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "raw_parquet",
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": {
+											"value": "@substring(item().name,0,indexOf(item().name,'.'))",
+											"type": "Expression"
+										},
+										"database_name": {
+											"value": "@substring(item().name,0,indexOf(item().name,'_'))",
+											"type": "Expression"
+										},
+										"schema_name": {
+											"value": "@substring(item().name,add(indexOf(item().name,'_'),1),sub(lastIndexOf(item().name,'_'),add(indexOf(item().name,'_'),1)))",
+											"type": "Expression"
+										},
+										"table_name": {
+											"value": "@substring(item().name,add(lastIndexOf(item().name,'_'),1),sub(length(item().name),add(lastIndexOf(item().name,'_'),4)))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "move_to_bad",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "copy_to_delta_ingestion",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": false,
+										"deleteFilesAfterCompletion": true
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "PreserveHierarchy"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "BinaryDataSource_File",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "poc",
+										"Directory": "in",
+										"filename": "@{item().name}"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "BinaryDataDestination",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "poc",
+										"Directory": "bad",
+										"filename": "@{item().name}"
+									}
+								}
+							]
+						},
+						{
+							"name": "move_to_out",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "copy_to_delta_ingestion",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": false,
+										"deleteFilesAfterCompletion": true
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "PreserveHierarchy"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "BinaryDataSource_File",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "poc",
+										"Directory": "in",
+										"filename": "@{item().name}"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "BinaryDataDestination",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "poc",
+										"Directory": "out",
+										"filename": "@{item().name}"
+									}
+								}
+							]
+						},
+						{
+							"name": "copy_to_delta_ingestion",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "move_to_raw",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"additionalColumns": [
+										{
+											"name": "Year",
+											"value": {
+												"value": "@utcNow('yyyy')",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "Month",
+											"value": {
+												"value": "@utcNow('MM')",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "Day",
+											"value": {
+												"value": "@utcNow('dd')",
+												"type": "Expression"
+											}
+										},
+										{
+											"name": "Time",
+											"value": {
+												"value": "@utcNow('HHmmss')",
+												"type": "Expression"
+											}
+										}
+									],
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": false,
+										"wildcardFolderPath": "in",
+										"wildcardFileName": {
+											"value": "@{item().name}",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "PreserveHierarchy"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"value": "@json(activity('Lookup_MetadataDB').output.firstRow.mapping)",
+									"type": "Expression"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "landing_in",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ingestion_input",
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": "@substring(item().name,0,indexOf(item().name,'.'))",
+										"database_name": "@substring(item().name,0,indexOf(item().name,'_'))",
+										"schema_name": "@substring(item().name,add(indexOf(item().name,'_'),1),sub(lastIndexOf(item().name,'_'),add(indexOf(item().name,'_'),1)))",
+										"table_name": "@substring(item().name,add(lastIndexOf(item().name,'_'),1),sub(length(item().name),add(lastIndexOf(item().name,'_'),4)))"
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "FilterFiles",
+				"description": "Only files will be selected, the source-folders will not be selected.",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "GetFileList",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetFileList').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().type, 'File')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"column_mapping": {
+				"type": "String"
+			},
+			"full_path": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-09-24T13:13:36Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

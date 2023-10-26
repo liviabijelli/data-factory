@@ -1,0 +1,25 @@
+{
+	"name": "MetadataMirror",
+	"properties": {
+		"Name": "MetadataMirror",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://config@conpaqis.dfs.core.windows.net/metadata/DataSource",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "DataLake"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 2,
+		"ObjectId": "5564ed9f-fbb2-467b-924e-9f7029887159"
+	},
+	"type": "DATABASE"
+}

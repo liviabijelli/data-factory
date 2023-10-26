@@ -1,0 +1,17 @@
+{
+	"name": "Test_Visual",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [ClaveFiscal]\n,[Codigo]\n,[EsBancoExtranjero]\n,[Id]\n,[Logotipo]\n,[Nombre]\n,[PaginaWeb]\n,[RFC]\n,[TimeStamp]\n,[Year]\n,[Month]\n,[Day]\n,[Time]\n FROM [ctEmpresaEjemploBD].[dbo.Bancos]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CleansedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

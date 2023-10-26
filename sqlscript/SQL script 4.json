@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 4",
+	"properties": {
+		"content": {
+			"query": "SELECT COUNT(0)\n FROM [workshop].[DocAdministrativo]\n\n SELECT * \n FROM [workshop].[DocAdministrativo]\n WHERE Company = '4905a71a-9ff4-4291-951e-3df3bf04f7ce'\n AND UUID = '46ad02ac-c79b-4d3d-b22b-083332651b36'\n \n --FIRST EXEC = 45053\n\n 4905a71a-9ff4-4291-951e-3df3bf04f7ce,46ad02ac-c79b-4d3d-b22b-083332651b36,G01,4.0,I,2022-10-31 13:08:58,Vigente,44600,Jalisco,Guadalajara,,null,null,null,null,6400.97,9196.8,3678.72,PUE,04,null,0,882.89,null,null,11400,612,AACA640127JR1,ALEJO ALANIS CRUZ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CleansedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

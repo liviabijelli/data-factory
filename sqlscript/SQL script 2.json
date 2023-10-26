@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [Codigo]\n,[CtaMayor]\n,[Id]\n,[IdRubro]\n,[Nombre]\n,[TimeStamp]\n,[Tipo]\n FROM [ctEmpresaEjemploBD].[dbo.AgrupadoresSAT]\n order by Id",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CleansedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

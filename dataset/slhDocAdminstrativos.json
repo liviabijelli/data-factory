@@ -1,0 +1,140 @@
+{
+	"name": "slhDocAdminstrativos",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "slh_landing_storage_account",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "workshop"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Company",
+				"type": "String"
+			},
+			{
+				"name": "UUID",
+				"type": "String"
+			},
+			{
+				"name": "CFDIUse",
+				"type": "String"
+			},
+			{
+				"name": "Version",
+				"type": "String"
+			},
+			{
+				"name": "VoucherType",
+				"type": "String"
+			},
+			{
+				"name": "SealingDate",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "ZipCode",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "BankAccountOrigin",
+				"type": "String"
+			},
+			{
+				"name": "BankAccountDestination",
+				"type": "String"
+			},
+			{
+				"name": "ExchangeRate",
+				"type": "String"
+			},
+			{
+				"name": "ExchangeRateDof",
+				"type": "String"
+			},
+			{
+				"name": "TotalNotBrokenDownTaxAmount",
+				"type": "String"
+			},
+			{
+				"name": "TotalAmount",
+				"type": "String"
+			},
+			{
+				"name": "SubTotalAmount",
+				"type": "String"
+			},
+			{
+				"name": "Discount",
+				"type": "String"
+			},
+			{
+				"name": "PaymentMethod",
+				"type": "String"
+			},
+			{
+				"name": "PaymentForm",
+				"type": "String"
+			},
+			{
+				"name": "BankCheckNumber",
+				"type": "String"
+			},
+			{
+				"name": "TotalRetentionTaxes",
+				"type": "String"
+			},
+			{
+				"name": "TotalTranferTaxes",
+				"type": "String"
+			},
+			{
+				"name": "LocalTotalRetentionTaxes",
+				"type": "String"
+			},
+			{
+				"name": "LocalTotalTranferTaxes",
+				"type": "String"
+			},
+			{
+				"name": "ReceptorFiscalAddress",
+				"type": "String"
+			},
+			{
+				"name": "TaxRegimen",
+				"type": "String"
+			},
+			{
+				"name": "RFC",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

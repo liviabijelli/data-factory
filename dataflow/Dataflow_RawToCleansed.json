@@ -1,0 +1,122 @@
+{
+	"name": "Dataflow_RawToCleansed",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "lrbf_DocAdministrativos_Parquet",
+						"type": "DatasetReference"
+					},
+					"name": "rawparquet"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "DataLake",
+						"type": "LinkedServiceReference"
+					},
+					"name": "transfparquet"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumns"
+				},
+				{
+					"name": "cast"
+				},
+				{
+					"name": "alterRow"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Company as string,",
+				"          UUID as string,",
+				"          CFDIUse as string,",
+				"          Version as string,",
+				"          VoucherType as string,",
+				"          SealingDate as string,",
+				"          Status as string,",
+				"          ZipCode as string,",
+				"          State as string,",
+				"          City as string,",
+				"          BankAccountOrigin as string,",
+				"          BankAccountDestination as string,",
+				"          ExchangeRate as string,",
+				"          ExchangeRateDof as string,",
+				"          TotalNotBrokenDownTaxAmount as string,",
+				"          TotalAmount as string,",
+				"          SubTotalAmount as string,",
+				"          Discount as string,",
+				"          PaymentMethod as string,",
+				"          PaymentForm as string,",
+				"          BankCheckNumber as string,",
+				"          TotalRetentionTaxes as string,",
+				"          TotalTranferTaxes as string,",
+				"          LocalTotalRetentionTaxes as string,",
+				"          LocalTotalTranferTaxes as string,",
+				"          ReceptorFiscalAddress as string,",
+				"          TaxRegimen as string,",
+				"          RFC as string,",
+				"          Name as string",
+				"     ),",
+				"     allowSchemaDrift: false,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> rawparquet",
+				"rawparquet derive(PartitionDate = substring(SealingDate,0,10),",
+				"          BankAccountOrigin = replace(BankAccountOrigin,\"null\"),",
+				"          BankAccountDestination = replace(BankAccountDestination,\"null\"),",
+				"          ExchangeRate = replace(ExchangeRate,\"null\"),",
+				"          ExchangeRateDof = replace(ExchangeRateDof,\"null\"),",
+				"          TotalNotBrokenDownTaxAmount = replace(TotalNotBrokenDownTaxAmount,\"null\"),",
+				"          BankCheckNumber = replace(BankCheckNumber,\"null\"),",
+				"          LocalTotalRetentionTaxes = replace(LocalTotalRetentionTaxes,\"null\"),",
+				"          LocalTotalTranferTaxes = replace(LocalTotalTranferTaxes,\"null\")) ~> derivedColumns",
+				"derivedColumns cast(output(",
+				"          SealingDate as date,",
+				"          BankAccountOrigin as decimal(10,0),",
+				"          BankAccountDestination as decimal(10,0),",
+				"          ExchangeRate as decimal(10,0),",
+				"          ExchangeRateDof as decimal(10,0),",
+				"          TotalNotBrokenDownTaxAmount as decimal(10,0),",
+				"          TotalAmount as decimal(10,0),",
+				"          SubTotalAmount as decimal(10,0),",
+				"          Discount as decimal(10,0),",
+				"          TotalRetentionTaxes as decimal(10,0),",
+				"          TotalTranferTaxes as decimal(10,0),",
+				"          LocalTotalRetentionTaxes as decimal(10,0)",
+				"     ),",
+				"     errors: false) ~> cast",
+				"cast alterRow(upsertIf(true())) ~> alterRow",
+				"alterRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'cleansed',",
+				"     folderPath: 'synapse/workspaces/contpaqui1/warehouse/DocAdministrativo',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: true,",
+				"     vacuum: 0,",
+				"     deletable: false,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: true,",
+				"     keys:['Company','UUID'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('key',",
+				"          0,",
+				"          PartitionDate",
+				"     )) ~> transfparquet"
+			]
+		}
+	}
+}

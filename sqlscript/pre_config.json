@@ -1,0 +1,17 @@
+{
+	"name": "pre_config",
+	"properties": {
+		"content": {
+			"query": "\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = '2$poc%kyndryl0';\n\nCREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity\nWITH IDENTITY = 'Managed Identity'\n\n--DROP EXTERNAL DATA SOURCE [dl_raw]\nCREATE EXTERNAL DATA SOURCE [dl_raw] WITH\n(\n\tLOCATION = 'https://conpaqis.blob.core.windows.net/raw/',\n\tCREDENTIAL = [WorkspaceIdentity]\n)\n\n--DROP EXTERNAL DATA SOURCE [dl_cleansed]\nCREATE EXTERNAL DATA SOURCE [dl_cleansed]\nWITH ( LOCATION = 'https://conpaqis.blob.core.windows.net/cleansed/synapse/workspaces/contpaqui1/warehouse/' , CREDENTIAL = [WorkspaceIdentity]\n);\n\nALTER DATABASE CURRENT COLLATE Latin1_General_100_BIN2_UTF8;\n\nCREATE EXTERNAL FILE FORMAT [dl_parquet] WITH (  FORMAT_TYPE = PARQUET );\n\nCREATE EXTERNAL FILE FORMAT [dl_delta] WITH (  FORMAT_TYPE = DELTA );",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CuratedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

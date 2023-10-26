@@ -1,0 +1,232 @@
+{
+	"name": "RawDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RawDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "object_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "principal_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "schema_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "parent_object_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "type",
+				"type": "char"
+			},
+			{
+				"name": "type_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "create_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modify_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "is_ms_shipped",
+				"type": "bit"
+			},
+			{
+				"name": "is_published",
+				"type": "bit"
+			},
+			{
+				"name": "is_schema_published",
+				"type": "bit"
+			},
+			{
+				"name": "lob_data_space_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "filestream_data_space_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "max_column_id_used",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "lock_on_bulk_load",
+				"type": "bit"
+			},
+			{
+				"name": "uses_ansi_nulls",
+				"type": "bit"
+			},
+			{
+				"name": "is_replicated",
+				"type": "bit"
+			},
+			{
+				"name": "has_replication_filter",
+				"type": "bit"
+			},
+			{
+				"name": "is_merge_published",
+				"type": "bit"
+			},
+			{
+				"name": "is_sync_tran_subscribed",
+				"type": "bit"
+			},
+			{
+				"name": "has_unchecked_assembly_data",
+				"type": "bit"
+			},
+			{
+				"name": "text_in_row_limit",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "large_value_types_out_of_row",
+				"type": "bit"
+			},
+			{
+				"name": "is_tracked_by_cdc",
+				"type": "bit"
+			},
+			{
+				"name": "lock_escalation",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "lock_escalation_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "is_filetable",
+				"type": "bit"
+			},
+			{
+				"name": "is_memory_optimized",
+				"type": "bit"
+			},
+			{
+				"name": "durability",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "durability_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "temporal_type",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "temporal_type_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "history_table_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "is_remote_data_archive_enabled",
+				"type": "bit"
+			},
+			{
+				"name": "is_external",
+				"type": "bit"
+			},
+			{
+				"name": "history_retention_period",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "history_retention_period_unit",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "history_retention_period_unit_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "is_node",
+				"type": "bit"
+			},
+			{
+				"name": "is_edge",
+				"type": "bit"
+			},
+			{
+				"name": "data_retention_period",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "data_retention_period_unit",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "data_retention_period_unit_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ledger_type",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "ledger_type_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ledger_view_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "is_dropped_ledger_table",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "sys",
+			"table": "tables"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

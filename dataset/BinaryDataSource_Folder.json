@@ -1,0 +1,23 @@
+{
+	"name": "BinaryDataSource_Folder",
+	"properties": {
+		"description": "It describes the folder in the data source store.",
+		"linkedServiceName": {
+			"referenceName": "Landing Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "in",
+					"type": "Expression"
+				},
+				"fileSystem": "poc"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

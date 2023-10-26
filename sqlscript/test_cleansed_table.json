@@ -1,0 +1,17 @@
+{
+	"name": "test_cleansed_table",
+	"properties": {
+		"content": {
+			"query": "\n\nSELECT * FROM [ctEmpresaEjemploBD].[dbo.AgrupadoresSAT]  order by Id",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "CleansedDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

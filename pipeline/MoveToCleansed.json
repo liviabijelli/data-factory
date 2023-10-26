@@ -1,0 +1,167 @@
+{
+	"name": "MoveToCleansed",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetFileList",
+				"description": "Get the list of file",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ingestion_parquet_files",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true
+					},
+					"formatSettings": {
+						"type": "ParquetReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEachFile",
+				"description": "Iterate each file, and move them one by one.",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "FilterFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('FilterFiles').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 20,
+					"activities": [
+						{
+							"name": "df_raw_to_cleansed",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "Dataflow_to_Delta",
+									"type": "DataFlowReference",
+									"parameters": {
+										"database_name": {
+											"value": "'@{first(array(split(item().name,'_')))}'",
+											"type": "Expression"
+										},
+										"schema_name": {
+											"value": "'@{first(skip(array(split(item().name,'_')),1))}'",
+											"type": "Expression"
+										},
+										"table_name": {
+											"value": "'@{first(skip(array(split(item().name,'_')),2))}'",
+											"type": "Expression"
+										},
+										"file_name": {
+											"value": "'@{item().name}'",
+											"type": "Expression"
+										}
+									},
+									"datasetParameters": {
+										"raw": {
+											"file_name": {
+												"value": "@item().name",
+												"type": "Expression"
+											},
+											"database_name": {
+												"value": "@first(array(split(item().name,'_')))",
+												"type": "Expression"
+											},
+											"schema_name": {
+												"value": "@first(skip(array(split(item().name,'_')),1))",
+												"type": "Expression"
+											},
+											"table_name": {
+												"value": "@first(skip(array(split(item().name,'_')),2))",
+												"type": "Expression"
+											}
+										}
+									}
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "FilterFiles",
+				"description": "Only files will be selected, the source-folders will not be selected.",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "GetFileList",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetFileList').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().type, 'File')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"database_name": {
+				"type": "String"
+			},
+			"array_file_name": {
+				"type": "Array"
+			},
+			"schema_name": {
+				"type": "String"
+			},
+			"table_name": {
+				"type": "String"
+			},
+			"file_name": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-09-24T16:32:56Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}
